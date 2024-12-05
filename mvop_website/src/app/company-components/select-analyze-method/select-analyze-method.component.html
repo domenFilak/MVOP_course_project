@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <h2>Izbira metode za analizo</h2>
+    <p>
+        Spodaj lahko izberete želeno metodo za izvedbo analize.<br>
+        Vidite lahko tudi prej izbrana podjetja za analizo.
+    </p>
+
+    <h3>Izbrana podjetja</h3>
+    <!--display selected companies for analysis-->
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Ime podjetja</th>
+                    <th>Prihodek ($M)</th>
+                    <th>Dobiček ($M)</th>
+                    <th>Sredstva ($M)</th>
+                    <th>Št. zaposlenih</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let company of companies">
+                    <td>{{ company.rank }}</td>
+                    <td>{{ company.ime }}</td>
+                    <td>{{ company.prihodek }}</td>
+                    <td>{{ company.dobicek }}</td>
+                    <td>{{ company.sredstva }}</td>
+                    <td>{{ company.stZaposlenih }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <h3>Izberite metodo</h3>
+    <!--drop down list for methods-->
+    <div class="col-3">
+        <select name="methods" id="methods" class="form-select" [(ngModel)]="selectedMethod">
+            <option value="ahp">Ahp</option>
+            <option value="topsis">Topsis</option>
+            <option value="promethee">Promethee</option>
+            <option value="wsm">Wsm</option>
+        </select>
+    </div>
+
+    <br>
+    <button (click)="redirect()" class="btn btn-primary">Naprej</button>
+</div>
+

@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="table-responsive mt-4">
+        <h2>Tabela možnih podjetij za analizo</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Ime podjetja</th>
+                    <th>Prihodek ($M)</th>
+                    <th>Dobiček ($M)</th>
+                    <th>Sredstva ($M)</th>
+                    <th>Št. zaposlenih</th>
+                    <th>_id</th>
+                    <th>
+                        
+                        <input type="checkbox" (change)="toggleSelectAll($event)" />
+                        Izbor za analizo
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let company of companies; let i = index">
+                    <td>{{ company.rank }}</td>
+                    <td>{{ company.ime }}</td>
+                    <td>{{ company.prihodek }}</td>
+                    <td>{{ company.dobicek }}</td>
+                    <td>{{ company.sredstva }}</td>
+                    <td>{{ company.stZaposlenih }}</td>
+                    <td>{{ company._id }}</td>
+                    <td>
+                        <input 
+                            type="checkbox" 
+                            [checked]="isSelected(i)" 
+                            (change)="toggleSelection(i)"
+                        >
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="selectedCompanies.length < 2">
+        <p class="text-danger">Izberite vsaj dve podjetji za analizo!</p>
+    </div>
+    <button (click)="redirect()" class="btn btn-primary" [disabled]="selectedCompanies.length < 2">Naprej</button>
+</div>
+
+
+

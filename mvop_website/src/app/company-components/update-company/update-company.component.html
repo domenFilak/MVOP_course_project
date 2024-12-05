@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <h2>Posodobi podjetje</h2>
+    <form [formGroup]="updateCompanyForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label class="form-label" for="rank">Rank (1 - 500)</label>
+            <input [class.is-invalid]="getRank()?.invalid && getRank()?.touched" formControlName="rank" type="text" class="form-control" name="rank" id="rank">
+            <div *ngIf="getRank()?.invalid && getRank()?.touched">
+                <small *ngIf="getRank()?.errors?.['pattern']" class="text-danger">Rank mora imeti celoštevilčno vrednost!</small>
+                
+                <small *ngIf="getRank()?.errors?.['required']" class="text-danger">Rank je zahtevan!</small>
+                
+                <small *ngIf="getRank()?.errors?.['min']" class="text-danger">Rank mora imeti vrednost med 1 in 500!</small>
+                
+                <small *ngIf="getRank()?.errors?.['max']" class="text-danger">Rank mora imeti vrednost med 1 in 500!</small>
+            </div>
+        </div>
+        <div>
+            <label class="form-label" for="ime">Ime podjetja</label>
+            <input [class.is-invalid]="getIme()?.invalid && getIme()?.touched" formControlName="ime" type="text" class="form-control" name="ime" id="ime">
+            <div *ngIf="getIme()?.invalid && getIme()?.touched">
+                <small *ngIf="getIme()?.errors?.['required']" class="text-danger">Ime je zahtevano!</small>
+                <small *ngIf="getIme()?.errors?.['minlength']" class="text-danger">Ime mora imeti vsaj 2 črki!</small>
+            </div>
+        </div>
+        <div>
+            <label class="form-label" for="prihodek">Prihodek ($M)</label>
+            <input [class.is-invalid]="getPrihodek()?.invalid && getPrihodek()?.touched" formControlName="prihodek" type="text" class="form-control" name="prihodek" id="prihodek">
+            <div *ngIf="getPrihodek()?.invalid && getPrihodek()?.touched">
+                <small *ngIf="getPrihodek()?.errors?.['required']" class="text-danger">Prihodek je zahtevan!</small>
+                <small *ngIf="getPrihodek()?.errors?.['pattern']" class="text-danger">Prihodek mora biti celoštevilčen ali decimalen (do 2 decimalki)!</small>
+            </div>
+        </div>
+        <div>
+            <label class="form-label" for="dobicek">Dobiček ($M)</label>
+            <input [class.is-invalid]="getDobicek()?.invalid && getDobicek()?.touched" formControlName="dobicek" type="text" class="form-control" name="dobicek" id="dobicek">
+            <div *ngIf="getDobicek()?.invalid && getDobicek()?.touched">
+                <small *ngIf="getDobicek()?.errors?.['required']" class="text-danger">Dobiček je zahtevan!</small>
+                <small *ngIf="getDobicek()?.errors?.['pattern']" class="text-danger">Dobiček mora biti celoštevilčen ali decimalen (do 2 decimalki)!</small>
+            </div>
+        </div>
+        <div>
+            <label class="form-label" for="sredstva">Sredstva ($M)</label>
+            <input [class.is-invalid]="getSredstva()?.invalid && getSredstva()?.touched" formControlName="sredstva" type="text" class="form-control" name="sredstva" id="sredstva">
+            <div *ngIf="getSredstva()?.invalid && getSredstva()?.touched">
+                <small *ngIf="getSredstva()?.errors?.['required']" class="text-danger">Sredstva so zahtevana!</small>
+                <small *ngIf="getSredstva()?.errors?.['pattern']" class="text-danger">Sredstva morajo biti celoštevilčna ali decimalna (do 2 decimalki)!</small>
+            </div>
+        </div>
+        <div>
+            <label class="form-label" for="stZaposlenih">St. zaposlenih</label>
+            <input [class.is-invalid]="getStZaposlenih()?.invalid && getStZaposlenih()?.touched" formControlName="stZaposlenih" type="text" class="form-control" name="stZaposlenih" id="stZaposlenih">
+            <div *ngIf="getStZaposlenih()?.invalid && getStZaposlenih()?.touched">
+                <small *ngIf="getStZaposlenih()?.errors?.['pattern']" class="text-danger">Št. zaposlenih mora biti celoštevilčna vrednost!</small>
+                <small *ngIf="getStZaposlenih()?.errors?.['required']" class="text-danger">Št. zaposlenih je zahtevano!</small>
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-success" type="submit" [disabled]="updateCompanyForm.invalid" style="margin-right: 10px;">Posodobi</button>
+        <button (click)="redirect()" class="btn btn-warning">Nazaj</button>
+        
+    </form>
+    
+</div>
