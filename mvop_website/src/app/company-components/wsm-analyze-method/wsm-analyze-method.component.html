@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <h1>Wsm metoda</h1>
+    <p>
+        Na tej strani je izvedena wsm metoda.<br>
+        Rezultati metode so vidni na koncu strani.
+    </p>
+    <h3>Izbrana podjetja</h3>
+    <!--display selected companies for analysis-->
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Ime podjetja</th>
+                    <th>Prihodek ($M)</th>
+                    <th>Dobiček ($M)</th>
+                    <th>Sredstva ($M)</th>
+                    <th>Št. zaposlenih</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let company of companies">
+                    <td>{{ company.rank }}</td>
+                    <td>{{ company.ime }}</td>
+                    <td>{{ company.prihodek }}</td>
+                    <td>{{ company.dobicek }}</td>
+                    <td>{{ company.sredstva }}</td>
+                    <td>{{ company.stZaposlenih }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h3>Določite uteži in max/min</h3>
+    <!--display selected companies for analysis-->
+    <p>
+        Za <strong>vsak kriterij</strong> določite <strong>utež</strong>, <strong>seštevek</strong> mora biti <strong>enak 1!</strong><br>
+        <strong>Določite</strong> tudi, ali je pri posameznem <strong>kriteriju preferirana</strong> največja vrednost, <strong>max</strong>, ali ne.
+    </p>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+                <th></th>
+                <th>Rank</th>
+                <th>Prihodek ($M)</th>
+                <th>Dobiček ($M)</th>
+                <th>Sredstva ($M)</th>
+                <th>Št. zaposlenih</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Utež</td>
+              <td><input type="number" required [(ngModel)]="weights[0]" step="0.01" /></td>
+              <td><input type="number" required [(ngModel)]="weights[1]" step="0.01" /></td>
+              <td><input type="number" required [(ngModel)]="weights[2]" step="0.01" /></td>
+              <td><input type="number" required [(ngModel)]="weights[3]" step="0.01" /></td>
+              <td><input type="number" required [(ngModel)]="weights[4]" step="0.01" /></td>
+            </tr>
+            <tr>
+              <td>Je Max</td>
+              <td><input type="checkbox" [(ngModel)]="isMax[0]" /></td>
+              <td><input type="checkbox" [(ngModel)]="isMax[1]" /></td>
+              <td><input type="checkbox" [(ngModel)]="isMax[2]" /></td>
+              <td><input type="checkbox" [(ngModel)]="isMax[3]" /></td>
+              <td><input type="checkbox" [(ngModel)]="isMax[4]" /></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="errors.length > 0" class="mt-3">
+        <p *ngFor="let error of errors" class="text-danger">{{ error }}</p>
+    </div>
+
+    <div class="table-responsive">
+        <button (click)="validate()" class="btn btn-primary">Naprej</button>
+    </div>
+
+    <div class="table-responsive" *ngIf="this.finalResults.length > 0;">
+        <h3>Rezultati</h3>
+        <p>
+            V tabeli so prikazani rezultati wsm metode.<br>
+            <strong>Najvišja wsm ocena</strong> predstavlja <strong>najboljšo izbiro</strong>.
+        </p>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Ime podjetja</th>
+              <th>Wsm ocena</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let result of finalResults">
+              <td>{{ result.ime }}</td>
+              <td>{{ result.wsmOcena }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>
+

@@ -4,12 +4,12 @@ import { Router } from '@angular/router';
 import { PythonScriptsService } from '../../services/python-scripts.service';
 
 @Component({
-  selector: 'app-topsis-analyze-method-component',
-  templateUrl: './topsis-analyze-method.component.html',
-  styleUrl: './topsis-analyze-method.component.css'
+  selector: 'app-wsm-analyze-method',
+  templateUrl: './wsm-analyze-method.component.html',
+  styleUrl: './wsm-analyze-method.component.css'
 })
-export class TopsisAnalyzeMethodComponent implements OnInit {
-
+export class WsmAnalyzeMethodComponent implements OnInit{
+  
   companies: any[] = [];
 
   isMax: boolean[] = [false, false, false, false, false]; // Vrednosti preferečne vrednosti SO shranjene PO KLIKU ANALIZIRAJ
@@ -19,8 +19,8 @@ export class TopsisAnalyzeMethodComponent implements OnInit {
   transformedIsMaxArray: string[] = []; //pripravljeno ZA PYTHON
 
 
-  results: any[] = []; // To store the topsis method python data
-  finalResults: any[] = []; // Stores the combined data of IME and TOPSIS OCENA
+  results: any[] = []; // To store the wsm method python data
+  finalResults: any[] = []; // Stores the combined data of IME and WSM OCENA
 
   constructor(private selectedCompaniesDataService: SelectedCompaniesDataService, private router: Router, private _pythonScriptService: PythonScriptsService){}
 
@@ -67,19 +67,19 @@ export class TopsisAnalyzeMethodComponent implements OnInit {
 
       console.log(data);
 
-      this._pythonScriptService.postTopsis(data)
+      this._pythonScriptService.postWsm(data)
       .subscribe({
         next: res => {
-          console.log('Success running python topsis script!', res);
+          console.log('Success running python wsm script!', res);
           this.results = res.result; //flask poslje JSON z naslovom polja "result": ...
-          this.results = this.results.map(result => parseFloat(result.toFixed(2))); //zaokrozevanje...
+          this.results = this.results.map(result => parseFloat(result.toFixed(4))); //zaokrozevanje...
           this.combineResults();
            
         },
         error: error => {
           console.error('Error!', error);
         },
-        complete: () => console.log('Python topsis request completed!')
+        complete: () => console.log('Python wsm request completed!')
     });
     }
 
@@ -88,9 +88,7 @@ export class TopsisAnalyzeMethodComponent implements OnInit {
   combineResults() {
     this.finalResults = this.companies.map((company, index) => ({
       ime: company.ime,
-      topsisOcena: this.results[index] || 0 // Match TOPSIS OCENA to the company
+      wsmOcena: this.results[index] || 0 // Match WSM OCENA to the company
     }));
   }
-
-
 }

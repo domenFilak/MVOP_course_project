@@ -22,7 +22,7 @@ export class SelectAnalyzeMethodComponent implements OnInit {
   }
 
   redirect(): void {
-    this.router.navigate(['analyze/method/topsis'], { skipLocationChange: true });
+    this.router.navigate(['analyze/method/' + this.selectedMethod.trim().toLowerCase()], { skipLocationChange: true });
   }
 
 }

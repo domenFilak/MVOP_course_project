@@ -7,6 +7,7 @@ import { UpdateCompanyComponent } from './company-components/update-company/upda
 import { SelectAnalyzeCompaniesComponent } from './company-components/select-analyze-companies/select-analyze-companies.component';
 import { SelectAnalyzeMethodComponent } from './company-components/select-analyze-method/select-analyze-method.component';
 import { TopsisAnalyzeMethodComponent } from './company-components/topsis-analyze-method/topsis-analyze-method.component';
+import { WsmAnalyzeMethodComponent } from './company-components/wsm-analyze-method/wsm-analyze-method.component';
 
 
 
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'show/update/:id', component: UpdateCompanyComponent },
   {path: 'analyze', component: SelectAnalyzeCompaniesComponent},
   {path: 'analyze/method', component: SelectAnalyzeMethodComponent},
-  {path:'analyze/method/topsis', component: TopsisAnalyzeMethodComponent}
+  {path:'analyze/method/topsis', component: TopsisAnalyzeMethodComponent},
+  {path:'analyze/method/wsm', component: WsmAnalyzeMethodComponent}
 ];
 
 @NgModule({
@@ -27,5 +29,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const routingComponents = [AddCompanyComponent, ShowCompaniesComponent, WelcomeComponent, UpdateCompanyComponent, SelectAnalyzeCompaniesComponent
-  , SelectAnalyzeMethodComponent, TopsisAnalyzeMethodComponent
+  , SelectAnalyzeMethodComponent, TopsisAnalyzeMethodComponent, WsmAnalyzeMethodComponent
 ];
