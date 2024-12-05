@@ -4,12 +4,11 @@ import { Router } from '@angular/router';
 import { PythonScriptsService } from '../../services/python-scripts.service';
 
 @Component({
-  selector: 'app-wsm-analyze-method',
-  templateUrl: './wsm-analyze-method.component.html',
-  styleUrl: './wsm-analyze-method.component.css'
+  selector: 'app-promethee-analyze-method',
+  templateUrl: './promethee-analyze-method.component.html',
+  styleUrl: './promethee-analyze-method.component.css'
 })
-export class WsmAnalyzeMethodComponent implements OnInit{
-  
+export class PrometheeAnalyzeMethodComponent implements OnInit {
   companies: any[] = [];
 
   isMax: boolean[] = [false, false, false, false, false]; // Vrednosti preferečne vrednosti SO shranjene PO KLIKU ANALIZIRAJ
@@ -19,10 +18,10 @@ export class WsmAnalyzeMethodComponent implements OnInit{
   transformedIsMaxArray: string[] = []; //pripravljeno ZA PYTHON
 
 
-  results: any[] = []; // To store the wsm method python data
-  finalResults: any[] = []; // Stores the combined data of IME and WSM OCENA
+  results: any[] = []; // To store the promethee method python data
+  finalResults: any[] = []; // Stores the combined data of IME and PROMETHEE OCENA
 
-  maxWsmOcena: any; //SHRANI NAJVIŠJO
+  maxPrometheeOcena: any; //SHRANI NAJVIŠJO
 
   constructor(private selectedCompaniesDataService: SelectedCompaniesDataService, private router: Router, private _pythonScriptService: PythonScriptsService){}
 
@@ -69,20 +68,20 @@ export class WsmAnalyzeMethodComponent implements OnInit{
 
       console.log(data);
 
-      this._pythonScriptService.postWsm(data)
+      this._pythonScriptService.postPromethee(data)
       .subscribe({
         next: res => {
-          console.log('Success running python wsm script!', res);
+          console.log('Success running python promethee script!', res);
           this.results = res.result; //flask poslje JSON z naslovom polja "result": ...
           this.results = this.results.map(result => parseFloat(result.toFixed(4))); //zaokrozevanje...
-          this.maxWsmOcena = Math.max(...this.results);
+          this.maxPrometheeOcena = Math.max(...this.results);
           this.combineResults();
            
         },
         error: error => {
           console.error('Error!', error);
         },
-        complete: () => console.log('Python wsm request completed!')
+        complete: () => console.log('Python promethee request completed!')
     });
     }
 
@@ -91,7 +90,7 @@ export class WsmAnalyzeMethodComponent implements OnInit{
   combineResults() {
     this.finalResults = this.companies.map((company, index) => ({
       ime: company.ime,
-      wsmOcena: this.results[index] || 0 // Match WSM OCENA to the company
+      prometheeOcena: this.results[index] || 0 // Match PROMETHEE OCENA to the company
     }));
   }
 }

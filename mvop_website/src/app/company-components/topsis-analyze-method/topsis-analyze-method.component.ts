@@ -22,6 +22,8 @@ export class TopsisAnalyzeMethodComponent implements OnInit {
   results: any[] = []; // To store the topsis method python data
   finalResults: any[] = []; // Stores the combined data of IME and TOPSIS OCENA
 
+  maxTopsisOcena: any; //SHRANI NAJVIŠJO
+
   constructor(private selectedCompaniesDataService: SelectedCompaniesDataService, private router: Router, private _pythonScriptService: PythonScriptsService){}
 
   ngOnInit(): void {
@@ -73,6 +75,7 @@ export class TopsisAnalyzeMethodComponent implements OnInit {
           console.log('Success running python topsis script!', res);
           this.results = res.result; //flask poslje JSON z naslovom polja "result": ...
           this.results = this.results.map(result => parseFloat(result.toFixed(2))); //zaokrozevanje...
+          this.maxTopsisOcena = Math.max(...this.results);
           this.combineResults();
            
         },

@@ -8,3 +8,8 @@
   input[type="number"] {
     width: 100px;
   }
+
+  .highlight {
+    background-color: green;
+    color: white; /* Optional for better readability */
+  }

@@ -9,6 +9,7 @@ export class PythonScriptsService {
 
   private _url_topsis = 'http://localhost:5000/calculate_topsis';
   private _url_wsm = 'http://localhost:5000/calculate_wsm';
+  private _url_promethee = 'http://localhost:5000/calculate_promethee';
 
   constructor(private _http: HttpClient) { }
 
@@ -18,6 +19,10 @@ export class PythonScriptsService {
 
   postWsm(data: any): Observable<any> {
     return this._http.post<any>(this._url_wsm, data);
+  }
+
+  postPromethee(data: any): Observable<any> {
+    return this._http.post<any>(this._url_promethee, data);
   }
 
 }

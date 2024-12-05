@@ -8,6 +8,7 @@ import { SelectAnalyzeCompaniesComponent } from './company-components/select-ana
 import { SelectAnalyzeMethodComponent } from './company-components/select-analyze-method/select-analyze-method.component';
 import { TopsisAnalyzeMethodComponent } from './company-components/topsis-analyze-method/topsis-analyze-method.component';
 import { WsmAnalyzeMethodComponent } from './company-components/wsm-analyze-method/wsm-analyze-method.component';
+import { PrometheeAnalyzeMethodComponent } from './company-components/promethee-analyze-method/promethee-analyze-method.component';
 
 
 
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'analyze', component: SelectAnalyzeCompaniesComponent},
   {path: 'analyze/method', component: SelectAnalyzeMethodComponent},
   {path:'analyze/method/topsis', component: TopsisAnalyzeMethodComponent},
-  {path:'analyze/method/wsm', component: WsmAnalyzeMethodComponent}
+  {path:'analyze/method/wsm', component: WsmAnalyzeMethodComponent},
+  {path:'analyze/method/promethee', component: PrometheeAnalyzeMethodComponent}
 ];
 
 @NgModule({
@@ -29,5 +31,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const routingComponents = [AddCompanyComponent, ShowCompaniesComponent, WelcomeComponent, UpdateCompanyComponent, SelectAnalyzeCompaniesComponent
-  , SelectAnalyzeMethodComponent, TopsisAnalyzeMethodComponent, WsmAnalyzeMethodComponent
+  ,SelectAnalyzeMethodComponent, TopsisAnalyzeMethodComponent, WsmAnalyzeMethodComponent, PrometheeAnalyzeMethodComponent
 ];

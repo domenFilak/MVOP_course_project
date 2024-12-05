@@ -1,7 +1,7 @@
 <div class="container-fluid">
-    <h1>Wsm metoda</h1>
+    <h1>Promethee metoda</h1>
     <p>
-        Na tej strani je izvedena wsm metoda.<br>
+        Na tej strani je izvedena promethee metoda.<br>
         Rezultati metode so vidni na koncu strani.
     </p>
     <h3>Izbrana podjetja</h3>
@@ -80,25 +80,24 @@
     <div class="table-responsive" *ngIf="this.finalResults.length > 0;">
         <h3>Rezultati</h3>
         <p>
-            V tabeli so prikazani rezultati wsm metode.<br>
-            <strong>Najvišja wsm ocena</strong> predstavlja <strong>najboljšo izbiro</strong>.
+            V tabeli so prikazani rezultati promethee metode.<br>
+            <strong>Najvišja promethee ocena</strong> predstavlja <strong>najboljšo izbiro</strong>.
         </p>
         <table class="table table-bordered">
           <thead>
             <tr>
               <th>Ime podjetja</th>
-              <th>Wsm ocena</th>
+              <th>Promethee ocena</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let result of finalResults">
               <td>{{ result.ime }}</td>
-              <td [ngClass]="{ 'highlight': result.wsmOcena === maxWsmOcena }">
-                {{ result.wsmOcena }}
+              <td [ngClass]="{ 'highlight': result.prometheeOcena === maxPrometheeOcena }">
+                {{ result.prometheeOcena }}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
 </div>
-

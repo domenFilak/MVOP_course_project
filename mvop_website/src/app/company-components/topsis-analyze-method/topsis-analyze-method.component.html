@@ -93,7 +93,9 @@
           <tbody>
             <tr *ngFor="let result of finalResults">
               <td>{{ result.ime }}</td>
-              <td>{{ result.topsisOcena }}</td>
+              <td [ngClass]="{ 'highlight': result.topsisOcena === maxTopsisOcena }">
+                {{ result.topsisOcena }}
+              </td>
             </tr>
           </tbody>
         </table>
