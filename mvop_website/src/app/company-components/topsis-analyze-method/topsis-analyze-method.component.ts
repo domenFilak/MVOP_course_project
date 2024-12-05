@@ -5,10 +5,10 @@ import { PythonScriptsService } from '../../services/python-scripts.service';
 
 @Component({
   selector: 'app-topsis-analyze-method-component',
-  templateUrl: './topsis-analyze-method-component.component.html',
-  styleUrl: './topsis-analyze-method-component.component.css'
+  templateUrl: './topsis-analyze-method.component.html',
+  styleUrl: './topsis-analyze-method.component.css'
 })
-export class TopsisAnalyzeMethodComponentComponent {
+export class TopsisAnalyzeMethodComponent {
 
   companies: any[] = [];
 
@@ -72,6 +72,7 @@ export class TopsisAnalyzeMethodComponentComponent {
         next: res => {
           console.log('Success running python topsis script!', res);
           this.results = res.result; //flask poslje JSON z naslovom polja "result": ...
+          this.results = this.results.map(result => parseFloat(result.toFixed(2))); //zaokrozevanje...
           this.combineResults();
            
         },

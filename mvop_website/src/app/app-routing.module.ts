@@ -6,7 +6,9 @@ import { WelcomeComponent } from './general-components/welcome/welcome.component
 import { UpdateCompanyComponent } from './company-components/update-company/update-company.component';
 import { SelectAnalyzeCompaniesComponent } from './company-components/select-analyze-companies/select-analyze-companies.component';
 import { SelectAnalyzeMethodComponent } from './company-components/select-analyze-method/select-analyze-method.component';
-import { TopsisAnalyzeMethodComponentComponent } from './company-components/topsis-analyze-method-component/topsis-analyze-method-component.component';
+import { TopsisAnalyzeMethodComponent } from './company-components/topsis-analyze-method/topsis-analyze-method.component';
+
+
 
 const routes: Routes = [
   {path: '', component: WelcomeComponent},
@@ -15,7 +17,7 @@ const routes: Routes = [
   {path: 'show/update/:id', component: UpdateCompanyComponent },
   {path: 'analyze', component: SelectAnalyzeCompaniesComponent},
   {path: 'analyze/method', component: SelectAnalyzeMethodComponent},
-  {path:'analyze/method/topsis', component: TopsisAnalyzeMethodComponentComponent}
+  {path:'analyze/method/topsis', component: TopsisAnalyzeMethodComponent}
 ];
 
 @NgModule({
@@ -25,5 +27,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const routingComponents = [AddCompanyComponent, ShowCompaniesComponent, WelcomeComponent, UpdateCompanyComponent, SelectAnalyzeCompaniesComponent
-  , SelectAnalyzeMethodComponent, TopsisAnalyzeMethodComponentComponent
+  , SelectAnalyzeMethodComponent, TopsisAnalyzeMethodComponent
 ];
