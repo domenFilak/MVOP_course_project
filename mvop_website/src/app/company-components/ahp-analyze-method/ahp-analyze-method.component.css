@@ -1,0 +1,15 @@
+.table-responsive {
+    margin: 20px 0;
+  }
+  .text-danger {
+    font-weight: bold;
+    color: red;
+  }
+  input[type="number"] {
+    width: 100px;
+  }
+
+  .highlight {
+    background-color: green;
+    color: white; /* Optional for better readability */
+  }

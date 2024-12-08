@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <h1>Ahp metoda</h1>
+    <p>
+        Na tej strani je izvedena ahp metoda.<br>
+        Rezultati metode so vidni na koncu strani.
+    </p>
+    <h3>Izbrana podjetja</h3>
+    <!--display selected companies for analysis-->
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Ime podjetja</th>
+                    <th>Prihodek ($M)</th>
+                    <th>Dobiček ($M)</th>
+                    <th>Sredstva ($M)</th>
+                    <th>Št. zaposlenih</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let company of companies">
+                    <td>{{ company.rank }}</td>
+                    <td>{{ company.ime }}</td>
+                    <td>{{ company.prihodek }}</td>
+                    <td>{{ company.dobicek }}</td>
+                    <td>{{ company.sredstva }}</td>
+                    <td>{{ company.stZaposlenih }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--user inputed values-->
+
+
+
+    
+</div>
