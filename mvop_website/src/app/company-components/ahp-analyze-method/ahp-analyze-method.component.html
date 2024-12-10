@@ -31,9 +31,78 @@
         </table>
     </div>
 
-    <!--user inputed values-->
-    <div>
-        <button (click)="onSubmit()">Submit AHP Data</button>
+    <h3>Določite ustrezne parametre</h3>
+    <!--display selected companies for analysis-->
+    <p>
+        Določite parametre za ahp metodo in pazite na konsistentnost.<br>
+        Vrednosti <strong>na diagonali morajo biti enake 1</strong>, <strong>ostale pa med 1-9 in obratno 1/1-1/9</strong>.
+    </p>
+
+    <!--user inputed values for alternatives-->
+    <h4>Parametri za alternative</h4>
+    <div *ngFor="let header of getHeaders()" class="table-responsive">
+        <p>Table for: <strong>{{header}}</strong></p>
+        <table>
+          <!-- Header Row: Display company names as column headers -->
+          <tr>
+            <th></th> <!-- Empty cell for the row header -->
+            <th *ngFor="let companyName of getCompanyNames()">
+              {{ companyName }}
+            </th>
+          </tr>
+      
+          <!-- Data Rows: Display company names in row headers and input fields inside the matrix -->
+          <tr *ngFor="let company of companies; let rowIndex = index">
+            <th>{{ company.ime }}</th> <!-- Company Name in the first column -->
+      
+            <!-- Loop through each company for columns in the same row -->
+            <td *ngFor="let companyValues of getCompanyNames(); let colIndex = index">
+              <!-- Input field for user to input values -->
+              <input
+                type="text"
+                [(ngModel)]="alternativesValues[header][rowIndex][colIndex]"
+                (input)="updateCellValue(header, rowIndex, colIndex, alternativesValues[header][rowIndex][colIndex])"
+              />
+            </td>
+          </tr>
+        </table>
     </div>
- 
+
+    <!--user inputed values for criteria-->
+    <h4>Parametri za kriterije</h4>
+    <div class="table-responsive">
+        <table>
+          <!-- Header Row: Display company names as column headers -->
+          <tr>
+            <th></th> <!-- Empty cell for the row header -->
+            <th *ngFor="let headerName of getHeaders()">
+              {{ headerName }}
+            </th>
+          </tr>
+      
+          <!-- Data Rows: Display company names in row headers and input fields inside the matrix -->
+          <tr *ngFor="let headerName of getHeaders(); let rowIndex = index">
+            <th>{{ headerName }}</th> <!-- Company Name in the first column -->
+      
+            <!-- Loop through each company for columns in the same row -->
+            <td *ngFor="let companyValues of getHeaders(); let colIndex = index">
+              <!-- Input field for user to input values -->
+              <input
+                type="text"
+                [(ngModel)]="PCcriteriaValues[rowIndex][colIndex]"
+              />
+            </td>
+          </tr>
+        </table>
+    </div>
+      
+      
+      
+
+
+    <button class="btn btn-primary" (click)="onSubmit()">Submit data</button>
+      
+      
+      
+
 </div>
