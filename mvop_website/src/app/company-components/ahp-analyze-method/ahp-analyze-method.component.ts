@@ -3,6 +3,8 @@ import { SelectedCompaniesDataService } from '../../services/selected-companies-
 import { Router } from '@angular/router';
 import { PythonScriptsService } from '../../services/python-scripts.service';
 import { Company } from '../../models/company';
+import { ChartType, ChartData, ChartOptions } from 'chart.js';
+
 
 @Component({
   selector: 'app-ahp-analyze-method',
@@ -121,6 +123,7 @@ export class AhpAnalyzeMethodComponent implements OnInit {
         this.results = this.results.map(result => parseFloat(result.toFixed(4))); //zaokrozevanje...
         this.maxAhpOcena = Math.max(...this.results);
         this.combineResults();
+        sessionStorage.setItem('ahpResults', JSON.stringify(this.finalResults));
       },
       error: error => {
         console.error('Error!', error);

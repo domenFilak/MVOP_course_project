@@ -1,0 +1,112 @@
+<div class="container-fluid">
+    <div *ngIf="checkArrays() == 0" class="alert alert-danger" role="alert">
+        Nobena metoda še ni bila izvedena, izvedite vsaj eno da lahko prikažete rezultate!
+    </div>
+    <div *ngIf="checkArrays() == 1">
+        <div class="col-3">
+            <label for="method-select" class="h2">Izberite metodo:</label>
+            <select id="method-select" [(ngModel)]="selectedMethod" class="form-select">
+              <option value="all">CELOTNI REZULTATI</option>
+              <option value="ahp">Ahp</option>
+              <option value="promethee">Promethee</option>
+              <option value="topsis">Topsis</option>
+              <option value="wsm">Wsm</option>
+            </select>
+        </div>
+        <br>
+      
+      
+      <div *ngIf="(selectedMethod === 'all' || selectedMethod === 'ahp')" class="col-3">
+        <div *ngIf="ahpResults.length === 0 && selectedMethod !== 'all'">
+            <p class="text-danger">Ahp metoda še ni bila izvedena. Izvedite za rezultate.</p>
+        </div>
+        <div *ngIf="ahpResults.length > 0">
+            <h4>Rezultati po metodi ahp:</h4>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Ime</th>
+                    <th scope="col">AHP Ocena</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let result of ahpResults">
+                    <td>{{ result.ime }}</td>
+                    <td [ngClass]="{ 'highlight': result.ahpOcena === maxAHP}">{{ result.ahpOcena }}</td>
+                  </tr>
+                </tbody>
+            </table> 
+        </div>         
+      </div>
+      
+      <div *ngIf="(selectedMethod === 'all' || selectedMethod === 'promethee')" class="col-3">
+        <div *ngIf="prometheeResults.length === 0 && selectedMethod !== 'all'">
+            <p class="text-danger">Promethee metoda še ni bila izvedena. Izvedite za rezultate.</p>
+        </div>
+        <div *ngIf="prometheeResults.length > 0">
+            <h4>Rezultati po metodi promethee:</h4>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Ime</th>
+                    <th scope="col">PROMETHEE Ocena</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let result of prometheeResults">
+                    <td>{{ result.ime }}</td>
+                    <td [ngClass]="{ 'highlight': result.prometheeOcena === maxPromethee}">{{ result.prometheeOcena }}</td>
+                  </tr>
+                </tbody>
+            </table>          
+        </div>
+      </div>
+      
+      <div *ngIf="(selectedMethod === 'all' || selectedMethod === 'topsis')" class="col-3">
+        <div *ngIf="topsisResults.length === 0 && selectedMethod !== 'all'">
+            <p class="text-danger">Topsis metoda še ni bila izvedena. Izvedite za rezultate.</p>
+        </div>
+        <div *ngIf="topsisResults.length > 0">
+            <h4>Rezultati po metodi topsis:</h4>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Ime</th>
+                    <th scope="col">TOPSIS Ocena</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let result of topsisResults">
+                    <td>{{ result.ime }}</td>
+                    <td [ngClass]="{ 'highlight': result.topsisOcena=== maxTopsis}">{{ result.topsisOcena }}</td>
+                  </tr>
+                </tbody>
+            </table> 
+        </div>         
+      </div>
+      
+      <div *ngIf="(selectedMethod === 'all' || selectedMethod === 'wsm')" class="col-3">
+        <div *ngIf="wsmResults.length === 0 && selectedMethod !== 'all'">
+            <p class="text-danger">Wsm metoda še ni bila izvedena. Izvedite za rezultate.</p>
+        </div>
+        <div *ngIf="wsmResults.length > 0">
+            <h4>Rezultati po metodi wsm:</h4>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Ime</th>
+                    <th scope="col">WSM Ocena</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let result of wsmResults">
+                    <td>{{ result.ime }}</td>
+                    <td [ngClass]="{ 'highlight': result.wsmOcena === maxWSM}">{{ result.wsmOcena }}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+</div>
+  

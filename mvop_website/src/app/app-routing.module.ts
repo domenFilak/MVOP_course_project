@@ -10,6 +10,7 @@ import { TopsisAnalyzeMethodComponent } from './company-components/topsis-analyz
 import { WsmAnalyzeMethodComponent } from './company-components/wsm-analyze-method/wsm-analyze-method.component';
 import { PrometheeAnalyzeMethodComponent } from './company-components/promethee-analyze-method/promethee-analyze-method.component';
 import { AhpAnalyzeMethodComponent } from './company-components/ahp-analyze-method/ahp-analyze-method.component';
+import { DisplayResultsComponent } from './company-components/display-results/display-results.component';
 
 
 
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'analyze/method/topsis', component: TopsisAnalyzeMethodComponent},
   {path:'analyze/method/wsm', component: WsmAnalyzeMethodComponent},
   {path:'analyze/method/promethee', component: PrometheeAnalyzeMethodComponent},
-  {path:'analyze/method/ahp', component: AhpAnalyzeMethodComponent}
+  {path:'analyze/method/ahp', component: AhpAnalyzeMethodComponent},
+  {path: 'display', component: DisplayResultsComponent}
 ];
 
 @NgModule({
@@ -33,5 +35,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const routingComponents = [AddCompanyComponent, ShowCompaniesComponent, WelcomeComponent, UpdateCompanyComponent, SelectAnalyzeCompaniesComponent
-  ,SelectAnalyzeMethodComponent, TopsisAnalyzeMethodComponent, WsmAnalyzeMethodComponent, PrometheeAnalyzeMethodComponent, AhpAnalyzeMethodComponent
+  ,SelectAnalyzeMethodComponent, TopsisAnalyzeMethodComponent, WsmAnalyzeMethodComponent, PrometheeAnalyzeMethodComponent, AhpAnalyzeMethodComponent, DisplayResultsComponent
 ];

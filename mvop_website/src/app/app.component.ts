@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -6,8 +6,13 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
   title = 'MVOP_DFilak';
+
+  ngOnInit(): void {
+    
+  }
 
 
 }

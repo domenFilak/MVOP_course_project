@@ -77,7 +77,7 @@ export class TopsisAnalyzeMethodComponent implements OnInit {
           this.results = this.results.map(result => parseFloat(result.toFixed(2))); //zaokrozevanje...
           this.maxTopsisOcena = Math.max(...this.results);
           this.combineResults();
-           
+          sessionStorage.setItem('topsisResults', JSON.stringify(this.finalResults));
         },
         error: error => {
           console.error('Error!', error);

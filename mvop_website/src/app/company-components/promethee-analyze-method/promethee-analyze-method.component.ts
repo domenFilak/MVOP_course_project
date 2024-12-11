@@ -76,7 +76,7 @@ export class PrometheeAnalyzeMethodComponent implements OnInit {
           this.results = this.results.map(result => parseFloat(result.toFixed(4))); //zaokrozevanje...
           this.maxPrometheeOcena = Math.max(...this.results);
           this.combineResults();
-           
+          sessionStorage.setItem('prometheeResults', JSON.stringify(this.finalResults));
         },
         error: error => {
           console.error('Error!', error);

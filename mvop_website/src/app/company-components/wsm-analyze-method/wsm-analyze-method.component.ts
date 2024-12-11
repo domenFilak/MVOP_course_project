@@ -77,7 +77,7 @@ export class WsmAnalyzeMethodComponent implements OnInit{
           this.results = this.results.map(result => parseFloat(result.toFixed(4))); //zaokrozevanje...
           this.maxWsmOcena = Math.max(...this.results);
           this.combineResults();
-           
+          sessionStorage.setItem('wsmResults', JSON.stringify(this.finalResults));
         },
         error: error => {
           console.error('Error!', error);
