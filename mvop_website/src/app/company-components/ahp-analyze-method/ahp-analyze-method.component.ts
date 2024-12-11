@@ -2,30 +2,38 @@ import { Component, OnInit } from '@angular/core';
 import { SelectedCompaniesDataService } from '../../services/selected-companies-data.service';
 import { Router } from '@angular/router';
 import { PythonScriptsService } from '../../services/python-scripts.service';
+import { Company } from '../../models/company';
 
 @Component({
   selector: 'app-ahp-analyze-method',
   templateUrl: './ahp-analyze-method.component.html',
   styleUrl: './ahp-analyze-method.component.css'
 })
+
+
 export class AhpAnalyzeMethodComponent implements OnInit {
 
   companies: any[] = [];
-
-  //matrixValues: string[][] = [];
 
   // This will hold the matrix values with the header name as the key
   alternativesValues: { [key: string]: string[][] } = {};
 
   PCcriteriaValues: string[][] = [];
 
+  results: any[] = [];
+  finalResults: any[] = []; // Stores the combined data of IME and AHP OCENA
+
+  maxAhpOcena: any; //shrani najvisjo
+
   constructor(private selectedCompaniesDataService: SelectedCompaniesDataService, private router: Router, private _pythonScriptService: PythonScriptsService){
   }
 
   ngOnInit(): void {
+    
     this.selectedCompaniesDataService.currentCompanies.subscribe(companies => {
       this.companies = companies;
     });
+    
     this.initializeMatrix();
     this.initializePCcriteria();
 
@@ -76,6 +84,13 @@ export class AhpAnalyzeMethodComponent implements OnInit {
     return parseFloat(result.toFixed(4)); 
   }
 
+  combineResults() {
+    this.finalResults = this.companies.map((company, index) => ({
+      ime: company.ime,
+      ahpOcena: this.results[index] || 0 // Match AHP OCENA to the company
+    }));
+  }
+
   // You can add a function to return the entire matrix with header names as the keys
   onSubmit() {
 
@@ -91,35 +106,28 @@ export class AhpAnalyzeMethodComponent implements OnInit {
       row.map(cell => this.convertFractionToFloat(cell).toString())
     );
 
-    console.log(this.PCcriteriaValues);
-    console.log(this.alternativesValues);
-  }
+    const data = {
+      PCcriteria: this.PCcriteriaValues,
+      alternatives_array: Object.entries(this.alternativesValues).reduce((result, [key, value]) => {
+        result[key] = value;
+        return result;
+      }, {} as { [key: string]: string[][] }),
+    };
 
-  /*
-  data = {
-    "PCcriteriaValues": [values inside of PCcriteriaValues array]
-    ],
-    "alternative_values": {
-      "key1": [ values inside of key1 array
-      ],
-      "key2": [ values inside of key2 array
-      ],
-      "key3": [ values inside of key3 array
-    }
-  };
-  
-  onSubmit() {
-    this._pythonScriptService.postAhp(this.data).subscribe({
+    this._pythonScriptService.postAhp(data).subscribe({
       next: res => {
         console.log('Success running python ahp script!', res);
+        this.results = res.result;
+        this.results = this.results.map(result => parseFloat(result.toFixed(4))); //zaokrozevanje...
+        this.maxAhpOcena = Math.max(...this.results);
+        this.combineResults();
       },
       error: error => {
         console.error('Error!', error);
       },
       complete: () => console.log('Python ahp request completed!')
     });
+    
   }
-
-  */
 
 }

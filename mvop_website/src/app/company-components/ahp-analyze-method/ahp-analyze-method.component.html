@@ -6,6 +6,7 @@
     </p>
     <h3>Izbrana podjetja</h3>
     <!--display selected companies for analysis-->
+    
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
@@ -30,7 +31,6 @@
             </tbody>
         </table>
     </div>
-
     <h3>Določite ustrezne parametre</h3>
     <!--display selected companies for analysis-->
     <p>
@@ -41,7 +41,7 @@
     <!--user inputed values for alternatives-->
     <h4>Parametri za alternative</h4>
     <div *ngFor="let header of getHeaders()" class="table-responsive">
-        <p>Table for: <strong>{{header}}</strong></p>
+        <p>Tabela za: <strong>{{header}}</strong></p>
         <table>
           <!-- Header Row: Display company names as column headers -->
           <tr>
@@ -96,13 +96,30 @@
         </table>
     </div>
       
-      
-      
+    <button class="btn btn-primary" (click)="onSubmit()">Naprej</button>
 
-
-    <button class="btn btn-primary" (click)="onSubmit()">Submit data</button>
+    <div class="table-responsive" *ngIf="this.finalResults.length > 0;">
+      <h3>Rezultati</h3>
+      <p>
+          V tabeli so prikazani rezultati ahp metode.<br>
+          <strong>Najvišja ahp ocena</strong> predstavlja <strong>najboljšo izbiro</strong>.
+      </p>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Ime podjetja</th>
+            <th>Ahp ocena</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of finalResults">
+            <td>{{ result.ime }}</td>
+            <td [ngClass]="{ 'highlight': result.ahpOcena === maxAhpOcena }">
+              {{ result.ahpOcena }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
       
-      
-      
-
 </div>

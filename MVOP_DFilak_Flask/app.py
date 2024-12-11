@@ -12,6 +12,16 @@ app = Flask(__name__)
 
 CORS(app, origins="http://localhost:4200")  # Allow requests from Angular app at localhost:4200
 
+def convert_to_numbers(data):
+    if isinstance(data, list):
+        return [convert_to_numbers(item) for item in data]
+    elif isinstance(data, dict):
+        return {key: convert_to_numbers(value) for key, value in data.items()}
+    elif isinstance(data, str):
+        return float(data)
+    else:
+        return data
+
 def graph(scores, b):
     """ scores is the matrix with the scores, and b
     is a string describing the score
@@ -264,6 +274,8 @@ def calculate_ahp_endpoint():
     # Get the JSON data from the request
     data = request.get_json()
 
+    data = convert_to_numbers(data)
+
     try:
 
         # Extract PCcriteria
@@ -279,7 +291,7 @@ def calculate_ahp_endpoint():
         allPCM = np.vstack(arrays)
 
         # the number of the alternatives
-        m = len(arrays)
+        m = len(arrays[0])
 
         # the number of the criteria
         n = len(PCcriteria)

@@ -1,3 +1,4 @@
+
 export interface Company {
 
     rank: string,
@@ -9,3 +10,4 @@ export interface Company {
     _id?: string
 
 }
+
