@@ -1,0 +1,240 @@
+[{
+  "_id": {
+    "$oid": "675ac1fdb806517d0d3da4ac"
+  },
+  "rank": "1",
+  "ime": "Walmart",
+  "prihodek": "485.87",
+  "dobicek": "13.64",
+  "sredstva": "198.83",
+  "stZaposlenih": "2300000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac225b806517d0d3da4ae"
+  },
+  "rank": "2",
+  "ime": "State Grid",
+  "prihodek": "315.12",
+  "dobicek": "9.57",
+  "sredstva": "489.84",
+  "stZaposlenih": "926067",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac262b806517d0d3da4b1"
+  },
+  "rank": "3",
+  "ime": "Sinopec Group",
+  "prihodek": "267.52",
+  "dobicek": "1.26",
+  "sredstva": "310.73",
+  "stZaposlenih": "713288",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac2c3b806517d0d3da4b3"
+  },
+  "rank": "4",
+  "ime": "China National Petroleum",
+  "prihodek": "262.57",
+  "dobicek": "1.87",
+  "sredstva": "585.62",
+  "stZaposlenih": "1512048",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac306b806517d0d3da4b6"
+  },
+  "rank": "5",
+  "ime": "Toyota Motor",
+  "prihodek": "254.69",
+  "dobicek": "16.9",
+  "sredstva": "437.58",
+  "stZaposlenih": "364445",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac32fb806517d0d3da4b9"
+  },
+  "rank": "6",
+  "ime": "Volkswagen",
+  "prihodek": "240.26",
+  "dobicek": "5.94",
+  "sredstva": "432.12",
+  "stZaposlenih": "626715",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac353b806517d0d3da4bc"
+  },
+  "rank": "7",
+  "ime": "Shell",
+  "prihodek": "240.03",
+  "dobicek": "4.56",
+  "sredstva": "411.28",
+  "stZaposlenih": "89000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac37cb806517d0d3da4c0"
+  },
+  "rank": "8",
+  "ime": "Berkshire Hathway",
+  "prihodek": "223.6",
+  "dobicek": "24.07",
+  "sredstva": "620.85",
+  "stZaposlenih": "367700",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac39ab806517d0d3da4c3"
+  },
+  "rank": "9",
+  "ime": "Apple",
+  "prihodek": "215.64",
+  "dobicek": "45.69",
+  "sredstva": "321.69",
+  "stZaposlenih": "116000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac3c0b806517d0d3da4c6"
+  },
+  "rank": "10",
+  "ime": "Exxon Mobil",
+  "prihodek": "205.00",
+  "dobicek": "7.84",
+  "sredstva": "330.31",
+  "stZaposlenih": "72700",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac3dfb806517d0d3da4c9"
+  },
+  "rank": "11",
+  "ime": "McKesson",
+  "prihodek": "198.53",
+  "dobicek": "5.07",
+  "sredstva": "60.97",
+  "stZaposlenih": "64500",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac427b806517d0d3da4cf"
+  },
+  "rank": "12",
+  "ime": "BP",
+  "prihodek": "186.61",
+  "dobicek": "115",
+  "sredstva": "263.32",
+  "stZaposlenih": "74500",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac448b806517d0d3da4d2"
+  },
+  "rank": "13",
+  "ime": "UnitedHealth Group",
+  "prihodek": "184.84",
+  "dobicek": "7.02",
+  "sredstva": "122.81",
+  "stZaposlenih": "230000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac46ab806517d0d3da4d4"
+  },
+  "rank": "14",
+  "ime": "CVS Health",
+  "prihodek": "177.53",
+  "dobicek": "5.32",
+  "sredstva": "94.46",
+  "stZaposlenih": "204000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac48ab806517d0d3da4d7"
+  },
+  "rank": "15",
+  "ime": "Samsung Electronics",
+  "prihodek": "173.96",
+  "dobicek": "19.32",
+  "sredstva": "217.10",
+  "stZaposlenih": "325000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac544b806517d0d3da4da"
+  },
+  "rank": "16",
+  "ime": "Glencore",
+  "prihodek": "173.88",
+  "dobicek": "1.38",
+  "sredstva": "124.60",
+  "stZaposlenih": "93123",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac566b806517d0d3da4dc"
+  },
+  "rank": "17",
+  "ime": "Mercedes-Benz Group",
+  "prihodek": "169.48",
+  "dobicek": "9.43",
+  "sredstva": "256.26",
+  "stZaposlenih": "282488",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac57eb806517d0d3da4de"
+  },
+  "rank": "18",
+  "ime": "General Motors",
+  "prihodek": "166.38",
+  "dobicek": "9.43",
+  "sredstva": "221.69",
+  "stZaposlenih": "225000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac59fb806517d0d3da4e2"
+  },
+  "rank": "19",
+  "ime": "AT&T",
+  "prihodek": "163.79",
+  "dobicek": "12.98",
+  "sredstva": "403.82",
+  "stZaposlenih": "268540",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ac5cbb806517d0d3da4e5"
+  },
+  "rank": "20",
+  "ime": "EXOR Group",
+  "prihodek": "154.89",
+  "dobicek": "651",
+  "sredstva": "186.17",
+  "stZaposlenih": "302562",
+  "__v": 0
+}]
